@@ -5,7 +5,7 @@ const popup = document.getElementById('popup-container');
 const notification = document.getElementById('notification-container');
 const finalMessage = document.getElementById('final-message');
 const finalMessageRevealWord = document.getElementById('final-message-reveal-word');
-const helpPopup = document.getElementById('popup-help');
+const helpPopup = document.getElementById('popup-container-help');
 
 document.getElementById('help-button').addEventListener('click', helpMessage)
 
@@ -22,7 +22,7 @@ function closeHelpPopupMessage() {
 
 const figureParts = document.querySelectorAll('.figure-part');
 
-const words = ['application', 'programming', 'interface', 'wizard'];
+const words = ['вересень', 'львів', 'покриття', 'концерт'];
 
 let selectedWord = words[Math.floor(Math.random() * words.length)];
 
@@ -49,7 +49,7 @@ function displayWord() {
 	const innerWord = wordEl.innerText.replace(/[ \n]/g, '');
 
 	if (innerWord === selectedWord) {
-		finalMessage.innerText = 'Congratulations! You won! 😃';
+		finalMessage.innerText = 'Вітаю! Ти вижив! 😃';
 		popup.style.display = 'flex';
 
 		playable = false;
@@ -60,7 +60,7 @@ function displayWord() {
 function updateWrongLettersEl() {
 	// Display wrong letters
 	wrongLettersEl.innerHTML = `
-    ${wrongLetters.length > 0 ? '<p>Wrong</p>' : ''}
+    ${wrongLetters.length > 0 ? '<p>Не вірно</p>' : ''}
     ${wrongLetters.map(letter => `<span>${letter}</span>`)}
   `;
 
@@ -77,8 +77,8 @@ function updateWrongLettersEl() {
 
 	// Check if lost
 	if (wrongLetters.length === figureParts.length) {
-		finalMessage.innerText = 'Unfortunately you lost. 😕';
-		finalMessageRevealWord.innerText = `...the word was: ${selectedWord}`;
+		finalMessage.innerText = 'Нажаль ти програв. 😕';
+		finalMessageRevealWord.innerText = `...а слово було: ${selectedWord}`;
 		popup.style.display = 'flex';
 
 		playable = false;
